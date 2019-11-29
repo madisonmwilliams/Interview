@@ -1,0 +1,103 @@
+ <!DOCTYPE html>
+<head>
+	<title>Presenting content</title>
+	<link href="styles.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<header>
+		<h1 class="glow">Interview</h1>
+		<h2 class="glow subtitle"> Web design class questions.</h2>
+	</header>
+	<date>November 16th, 2019</date>
+	<p class="by">By: Madison Williams</p>
+
+	<main>
+		<section class="subheading">
+			<p>Interview with Jessy McKee</p>
+		</section>
+		<section>
+			<div class="answer">
+				<h3>Why do you want to design?</h3>
+				<p class="addReadMore showlesscontent">I would like to design some awesome things in the future. Such as kick-ass logos and cool websites and maybe a few books here and there. Who knows I want to do cool things.</p>
+			</div>
+		</section>
+
+		<section>
+			<div class="answer">
+				<h3>What is difficult or frustrating for you within design and how do you work to push past that? </h3>
+				<p class="addReadMore showlesscontent"> The most frustrating thing designing thing is when the objective isn’t clear. It gets annoying when you create something only to have someone say that that was the total opposite of what they wanted.  </p>
+			</div>
+			</details>
+		</section>
+
+		<section class="toggle">
+			<div class="answer">
+				<h3>What do you see yourself doing after you finish this program? </h3>
+				<p class="addReadMore showlesscontent">Honestly I have no clue. Maybe work for some company and go freelance after a while. I think I'll just wing it until I can’t.</p>
+			</div>
+		</section>
+
+		<section>
+			<div class="answer">
+				<h3>What excites you about design?  </h3>
+				<p class="addReadMore showlesscontent">Honestly, I don’t think anything worries me about it<span id="dots">...</span><span id="more">I’m pretty open-minded about it.</p>
+				</details>
+			</div>
+		</section>
+		
+		<section>
+			<div class="answer">
+				<h3>Can design change the world?  </h3>
+				<p class="addReadMore showlesscontent">I don’t think so<span id="dots">...</span><span id="more">I believe design can impact us in many ways, but I don’t believe that design alone has the power to change the world.  </p>
+				</details>
+			</div>
+		</section>
+
+		<section>
+			<div class="answer">
+				<h3>What is a website? </h3>
+				<p class="addReadMore showlesscontent">A website is something that you can locate<span id="dots">...</span><span id="more">on the internet that provides all sort of information.  </p>
+				</details>
+			</div>
+		</section>
+
+	</main>
+	<script src="scripts.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script>
+		function AddReadMore() {
+	    //This limit you can set after how much characters you want to show Read More.
+	    var carLmt = 80;
+	    // Text to show when text is collapsed
+	    var readMoreTxt = " ... Read More";
+	    // Text to show when text is expanded
+	    var readLessTxt = " Read Less";
+
+
+	    //Traverse all selectors with this class and manupulate HTML part to show Read More
+	    $(".addReadMore").each(function() {
+	        if ($(this).find(".firstSec").length)
+	            return;
+
+	        var allstr = $(this).text();
+	        if (allstr.length > carLmt) {
+	            var firstSet = allstr.substring(0, carLmt);
+	            var secdHalf = allstr.substring(carLmt, allstr.length);
+	            var strtoadd = firstSet + "<span class='SecSec'>" + secdHalf + "</span><span class='readMore'  title='Click to Show More'>" + readMoreTxt + "</span><span class='readLess' title='Click to Show Less'>" + readLessTxt + "</span>";
+	            $(this).html(strtoadd);
+	        }
+
+	    });
+	    //Read More and Read Less Click Event binding
+	    $(document).on("click", ".readMore,.readLess", function() {
+	        $(this).closest(".addReadMore").toggleClass("showlesscontent showmorecontent");
+	    });
+	}
+	$(function() {
+	    //Calling function after Page Load
+	    AddReadMore();
+	});
+</script>
+</body>
